@@ -1,6 +1,5 @@
 apt-get update
 apt-get upgrade
-# reboot
 apt-get install postgresql postgresql-contrib
 
 # Download and run postgrest
