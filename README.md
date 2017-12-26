@@ -10,20 +10,22 @@ Postgrest(http://postgrest.com/en/latest/) is great, but generates
 
 You should have this information ready:
 
-* The `postgres` user's password
+* The `postgres` user's password (you may need to create one)
 * A 32 character randomly generated token, for JWT authentication
 
 ## Installation
 
-* Edit the postgrest.conf file and enter the postgres password and jwt token from the previous step
+* Edit the `postgrest.conf` file and enter the postgres password and jwt token from the previous step
 * Run the shell commands in the install.sh file as `root`
 * Run the sql in the install.sql file as `postgres`
 
 ## Operation
 
-* Run `postgrest.sh`
+* `./postgrest.sh`
 * Create some tables to represent your data structures
 * `killall -HUP postgrest` to regenerate API from schema
+* Check swagger docs for changes (/ on port 3000)
+* Edit nginx and add routes you want available to public
 
 ## Debugging
 
@@ -39,20 +41,13 @@ You should have this information ready:
 * Authentication with JWT: https://postgrest.com/en/v4.3/tutorials/tut1.html
 * nginx: https://postgrest.com/en/v4.3/admin.html#
 
-## Errors
+## Operation
+
+## Performance
+
+(benchmarking)
 
 ## Additional Reading
 
 http://postgrest.com/en/latest/
 https://nginx.org/en/docs/
-
-## Operation
-
-* `./postgrest ./postgrest.conf </dev/null >/var/log/postgrest.log 2>&1 &`
-* Create some tables to represent your data structures
-* `killall -HUP postgrest` to regenerate API from schema
-* Edit nginx and add routes you want available to public
-
-## Performance
-
-(benchmarking)
