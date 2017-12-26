@@ -1,33 +1,58 @@
 # Just Add Water
 
-Quickly create a hardened API from a Postgres database using postgrest & nginx.
+Serves a REST API automatically generated from a postgres database.
 
-## What you need
+## Rationale
+
+Postgrest(http://postgrest.com/en/latest/) is great, but generates
+
+## Prerequisites
 
 You should have this information ready:
 
-* postgres user's password (you may need to generate a password for this user on your vps)
-* a 32 character randomly generated token, for auth
-* a basic starting schema in mind for your project
+* The `postgres` user's password
+* A 32 character randomly generated token, for JWT authentication
 
-## Setup
+## Installation
 
-* Edit the install.sh and install.sql files to suit your needs
+* Edit the postgrest.conf file and enter the postgres password and jwt token from the previous step
+* Run the shell commands in the install.sh file as `root`
+* Run the sql in the install.sql file as `postgres`
 
-## Install
+## Operation
 
-* Run the shell commands in the .sh file
-* Run the sql in the .sql file
+* Run `postgrest.sh`
+* Create some tables to represent your data structures
+* `killall -HUP postgrest` to regenerate API from schema
+
+## Debugging
+
+* Check `/var/log/postgrest.log`
+* Check `/var/log/nginx/error.log`
+* 502 Bad Gateway: Make sure postgrest is running
+* Try your request on port 3000, which bypasses the nginx proxy, but also allows all http routes/verbs.
+
+## Security Hardening
+
+* Firewall everything except ports `22`, `80`, and `443`
+* nginx runs on port 80, and proxys postgrest which is running on port 3000
+* Authentication with JWT: https://postgrest.com/en/v4.3/tutorials/tut1.html
+* nginx: https://postgrest.com/en/v4.3/admin.html#
+
+## Errors
+
+## Additional Reading
+
+http://postgrest.com/en/latest/
+https://nginx.org/en/docs/
 
 ## Operation
 
 * `./postgrest ./postgrest.conf </dev/null >/var/log/postgrest.log 2>&1 &`
 * Create some tables to represent your data structures
 * `killall -HUP postgrest` to regenerate API from schema
+* Edit nginx and add routes you want available to public
 
-## Debugging
+## Performance
 
-## Security
-
-* Authentication with JWT: https://postgrest.com/en/v4.3/tutorials/tut1.html
-* nginx: https://postgrest.com/en/v4.3/admin.html#
+(benchmarking)
