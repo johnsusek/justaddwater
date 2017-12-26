@@ -3,7 +3,7 @@ apt-get -y update >/dev/null
 apt-get -y upgrade >/dev/null
 apt-get -y install nginx postgresql postgresql-contrib >/dev/null
 
-mv nginx.conf /etc/nginx/
+mv nginx.conf /etc/nginx/ >/dev/null 2>&1
 service nginx restart
 
 echo "Downloading PostgREST..."
