@@ -1,6 +1,6 @@
-apt-get -y update
-apt-get -y upgrade
-apt-get -y install nginx postgresql postgresql-contrib 
+apt-get -y update >/dev/null
+apt-get -y upgrade >/dev/null
+apt-get -y install nginx postgresql postgresql-contrib >/dev/null
 
 mv nginx.conf /etc/nginx/
 service nginx restart
