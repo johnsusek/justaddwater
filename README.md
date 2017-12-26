@@ -1,10 +1,6 @@
 # Just Add Water
 
-Serves a REST API automatically generated from a postgres database.
-
-## Rationale
-
-Postgrest(http://postgrest.com/en/latest/) is great, but generates
+Serves a REST API automatically generated from a postgres database. Should be run on a fresh VPS/VM.
 
 ## Prerequisites
 
@@ -15,9 +11,9 @@ You should have this information ready:
 
 ## Installation
 
-* Edit the `postgrest.conf` file and enter the postgres password and jwt token from the previous step
 * Run the shell commands in the install.sh file as `root`
 * Run the sql in the install.sql file as `postgres`
+* Edit the `postgrest.conf` file and enter the postgres password and jwt token from the previous section
 
 ## Operation
 
