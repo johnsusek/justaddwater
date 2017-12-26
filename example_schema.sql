@@ -10,9 +10,13 @@ create table api.log (
   visitor jsonb 
 );
 
--- typically we would grant select only on anonymous requests
+-- typically on anonymous requests we would grant select only
 -- but since this is a log collector example, we grant only insert
+-- this will give anonymous web users access to a POST endpoint on /log
 grant insert on api.log to web_anon;
 
-grant all on api.log to web_authenticated;
+-- If you have a JWT token set up (see docs), there will be a web_authenticated role for auth'd users
+-- grant all on api.log to web_authenticated;
+
+-- we always give the postgres user permissions for internal use
 grant all on api.log to postgres;
