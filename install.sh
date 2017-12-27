@@ -9,6 +9,13 @@ echo "* Installing nginx config"
 [ -e nginx.conf ] && mv nginx.conf /etc/nginx/
 service nginx restart
 
+echo "* Installing certbot to get an ssl cert for this server"
+apt-get install software-properties-common >/dev/null
+add-apt-repository -y ppa:certbot/certbot
+apt-get -y update >/dev/null
+apt-get -y install python-certbot-nginx >/dev/null
+certbot --nginx
+
 echo "* Downloading PostgREST..."
 POSTGREST_VERSION="0.4.3.0"
 wget -q https://github.com/begriffs/postgrest/releases/download/v$POSTGREST_VERSION/postgrest-v$POSTGREST_VERSION-ubuntu.tar.xz 

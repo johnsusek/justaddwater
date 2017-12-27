@@ -4,16 +4,19 @@ Serves a REST API automatically generated from a postgres database. Should be ru
 
 ## Prerequisites
 
-You should have this information ready:
+You should have this ready:
 
 * The `postgres` user's password (you may need to create one)
 * A 32 character randomly generated token, for JWT authentication
+* A subdomain pointing to this machine with an A record
 
 ## Installation
 
 * Run the shell commands in the install.sh file as `root`
+* Answer questions during SSL setup...
 * Run the sql in the install.sql file as `postgres`
 * Edit the `postgrest.conf` file and enter the postgres password and jwt token from the previous section
+* Edit the `nginx.conf` file and enter the subdomain where you are hosting this (e.g. api.example.com)
 
 ## Operation
 
@@ -36,8 +39,6 @@ You should have this information ready:
 * nginx runs on port 80, and proxys postgrest which is running on port 3000
 * Authentication with JWT: https://postgrest.com/en/v4.3/tutorials/tut1.html
 * nginx: https://postgrest.com/en/v4.3/admin.html#
-
-## Operation
 
 ## Performance
 
