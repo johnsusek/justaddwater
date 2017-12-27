@@ -13,5 +13,4 @@ wget -q https://github.com/begriffs/postgrest/releases/download/v$POSTGREST_VERS
 tar Jxf postgrest-v$POSTGREST_VERSION-ubuntu.tar.xz
 rm postgrest-v$POSTGREST_VERSION-ubuntu.tar.xz*
 
-IP=ip addr | grep 'state UP' -A2 | tail -n1 | awk '{print $2}' | cut -f1  -d'/'
-echo "Installation complete. Don't forget to edit postgrest.conf. Then run postgrest.sh and check http://$IP:3000."
+echo "Installation complete. Don't forget to edit postgrest.conf. Then run postgrest.sh."
