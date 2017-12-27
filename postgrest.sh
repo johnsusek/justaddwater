@@ -11,7 +11,7 @@ LOG_LOCATION="/var/log/postgrest.log"
 
 if [ $? -eq 0 ]; then
   echo "http://$IP:3000"
-  echo "Hint: Do a File -> Import URL at http://editor.swagger.io/#!/"
+  echo "Hint: Do a File -> Import URL at http://editor.swagger.io"
 else
   echo "It looks like something went wrong. Look at $LOG_LOCATION?"
 fi

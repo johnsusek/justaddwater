@@ -3,7 +3,7 @@
 -- In this example, we have a log collecting api. Anonymous users will send in log messages to our api.
 
 -- example API object: "logentry"
-create table logentry (
+create table api.logentry (
   id serial primary key,
   namespace text not null,
   message jsonb not null,
@@ -13,10 +13,11 @@ create table logentry (
 -- typically on anonymous requests we would grant select only
 -- but since this is a log collector example, we grant only insert
 -- this will give anonymous web users access to a POST endpoint on /log
-grant insert on logentry to web_anon;
+grant select,insert on api.logentry to web_anon;
 
 -- If you have a JWT token set up (see docs), there will be a web_authenticated role for auth'd users
--- grant all on api.log to web_authenticated;
+grant all on api.log to web_authenticated;
 
 -- we always give the postgres user permissions for internal use
-grant all on logentry to postgres;
+grant all on api.logentry to postgres;
+
