@@ -16,13 +16,13 @@ create table api.entries (
 -- but since this is a log collector example, we grant insert too
 revoke all on api.entries from web_anon;
 grant select,insert on api.entries to web_anon;
+grant usage on all sequences in schema api TO web_anon;
 
 -- If you have a JWT token set up (see docs), there will be a 
 -- web_authenticated role for auth'd users
 revoke all on api.entries from web_authenticated;
 grant all on api.entries to web_authenticated;
+grant usage on all sequences in schema api TO web_authenticated;
 
 -- we always give the postgres user permissions for internal use
 grant all on api.entries to postgres;
-
-
