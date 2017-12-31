@@ -20,10 +20,10 @@ You should have this ready:
 
 ## Operation
 
-* `./postgrest.sh`
+* Start the daemon with `./postgrest.sh`
 * Create some tables to represent your data structures
-* `killall -HUP postgrest` to regenerate API from schema
 * Check swagger docs for changes (`/` on port `3000`)
+* `killall -HUP postgrest` to regenerate new keys/relationships
 * Edit nginx and add routes you want available to public
 
 ## Debugging
