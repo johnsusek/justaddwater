@@ -1,6 +1,7 @@
-echo "* Downloading nginx & postgresql packages..."
+echo "* Updating all packages..."
 apt-get -y update >/dev/null
 apt-get -y upgrade >/dev/null
+echo "* Downloading nginx & postgresql packages..."
 apt-get -y install nginx postgresql postgresql-contrib postgresql-server-dev-all build-essential >/dev/null
 echo "shared_preload_libraries='safeupdate'" >> /etc/postgresql/9.5/main/postgresql.conf;
 service postgresql restart
