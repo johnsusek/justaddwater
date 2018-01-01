@@ -12,11 +12,11 @@ You should have this ready:
 
 ## Installation
 
+* Edit the `postgrest.conf` file and enter the postgres password and jwt token from the previous section for `$POSTGRES_PASSWORD` and `$RANDOM_TOKEN`
+* Edit the `nginx.conf` file and enter the subdomain where you are hosting this (e.g. api.example.com) for `$API_SUBDOMAIN`
 * Run the shell commands in the install.sh file as `root`
 * Answer questions during SSL setup...
 * Run the sql in the install.sql file as `postgres`
-* Edit the `postgrest.conf` file and enter the postgres password and jwt token from the previous section
-* Edit the `nginx.conf` file and enter the subdomain where you are hosting this (e.g. api.example.com)
 
 ## Operation
 
@@ -36,8 +36,8 @@ You should have this ready:
 ## Security Hardening
 
 * Change the ssh port to `2222`: `sed -i 's/^Port 22/Port 2222/' /etc/ssh/sshd_config`
-* Restart ssh (may need to reconnect): `service ssh restart`
-* Start firewall and only allow `2222`,`80`,`443`: `ufw disable && ufw reset && ufw default deny && ufw allow proto tcp from any to any port 2222,80,443 && ufw enable`
+* Restart ssh: `service ssh restart`
+* Start firewall and only allow `2222`,`80`,`443`: `ufw default deny && ufw allow proto tcp from any to any port 2222,80,443 && ufw enable`
 * During development you might want to allow port `3000` for debugging: `ufw allow 3000`
 
 ## Authentication
